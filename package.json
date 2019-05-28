@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handle": "^1.0.0",
+    "mysql": "^2.17.1",
     "parser": "^0.1.4"
   }
 }
