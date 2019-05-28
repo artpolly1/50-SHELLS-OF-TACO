@@ -1,0 +1,28 @@
+{
+  "name": "50-shells-of-taco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artpolly1/50-SHELLS-OF-TACO.git"
+  },
+  "author": "AP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artpolly1/50-SHELLS-OF-TACO/issues"
+  },
+  "homepage": "https://github.com/artpolly1/50-SHELLS-OF-TACO#readme",
+  "dependencies": {
+    "bars": "^1.9.6",
+    "body": "^5.1.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handle": "^1.0.0",
+    "parser": "^0.1.4"
+  }
+}
