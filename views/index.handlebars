@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <h1>50 Shells Of Taco</h1>  
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Available Tacos</h2>
+
+      <ul>
+        {{#each tacos}}
+          {{#if vegetarian}}
+            {{#if picked_up}}
+            {{> tacos/taco-block picked_up=false}}
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="col-md-3 pic">
+      <img src="../public/assets/img/taco.png" alt="taco">
+    </div>
+
+    <div class="col-md-4">
+      <h2>Picked Up Tacos</h2>
+
+      <ul>
+        {{#each tacos}}
+          {{#unless picked_up}}
+            {{> tacos/taco-block picked_up=true}}
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-container">
+    <h2>Make a Taco Order</h2>
+    <form class="create-form">
+
+      <div class="form-group">
+        <label for="ca">Taco Name:</label>
+        <input type="text" id="tacoName">
+      </div>
+
+      <button class="create-form submit" type="submit">Add Taco</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+<script>
+   $(".create-form").on("submit", function (event) {
+    event.preventDefault();
+    let tacoOrder = {
+      taco_name: $("#tacoName").val().trim()
+    };
+    console.log(tacoOrder);
+    // Send the POST request.
+    $.ajax("/api/tacos", {
+      type: "POST",
+      data: tacoOrder
+    }).then(
+      function () {
+        console.log("You order has been made!");
+        location.reload();
+      }
+    );
+  });
+  $(".change-picked_up").click(function (event) {
+    let orderPickedUp = {
+      picked_up: true
+    };
+     id = $(this).attr("id");
+    console.log(id);
+    // Send the PUT request.
+    $.ajax("/api/tacos/" + id, {
+      type: "PUT",
+      data: orderPickedUp
+    }).then(
+      function () {
+        console.log("Here's your order. Please come again!");
+        location.reload();
+      }
+    );
+  });
+</script>
