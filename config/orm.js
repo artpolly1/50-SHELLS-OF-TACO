@@ -1,10 +1,8 @@
-// Import MySQL connection.
+
 const connection = require("../config/connection.js");
 
-// Helper function for SQL syntax.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
-function createQuestionMarkArray(num) {
+
+function printQuestionMarks(num) {
   let arr = [];
 
   for (let i = 0; i < num; i++) {
@@ -14,16 +12,16 @@ function createQuestionMarkArray(num) {
   return arr.toString();
 }
 
-// Helper function to convert object key/value pairs to SQL syntax
-function convertObjectToSqlSyntax(object) {
+
+function objToSql(ob) {
   let arr = [];
 
-  // loop through the keys and push the key/value as a string into arr
-  for (let key in object) {
-    let value = object[key];
-    // check to skip hidden properties
-    if (Object.hasOwnProperty.call(object, key)) {
-      // if string with spaces, add quotations (Arthur Taylor Polly => 'Arthur Taylor Polly')
+  
+  for (let key in ob) {
+    let value = ob[key];
+    
+    if (Object.hasOwnProperty.call(ob, key)) {
+      
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
@@ -31,12 +29,12 @@ function convertObjectToSqlSyntax(object) {
     }
   }
 
-  // translate array of strings to a single comma-separated string
+  
   return arr.toString();
 }
 
-// Object for all our SQL statement functions.
-const orm = {
+
+let orm = {
   selectAll: function(tableInput, cb) {
     let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
@@ -67,7 +65,7 @@ const orm = {
     });
   },
   updateOne: function(table, objColVals, condition, cb) {
-    let queryString = "UPDATE " + table;
+    let  queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);

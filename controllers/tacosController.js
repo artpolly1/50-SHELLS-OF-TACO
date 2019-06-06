@@ -1,8 +1,9 @@
 const express = require("express");
+const connection = require("../config/connection.js")
 const router = express.Router();
-const taco = require("../models/taco.js/index.js");
+const taco = require("../models/taco.js");
 
-router.get("/", function(request, response) {
+router.get("/", function(req, res) {
   taco.selectAll(function(data) {
     let hbsObject = {
       tacos: data
@@ -12,30 +13,28 @@ router.get("/", function(request, response) {
   });
 });
 
-router.post("/api/tacos", function(request, response) {
+router.post("/api/tacos", function(req, res) {
   taco.insertOne([
-    "taco_name", "devoured"
+    "taco_name", "picked_up"
   ], [
-    req.body.taco_name, req.body.devoured
+    req.body.taco_name, req.body.picked_up
   ], function(result) {
     res.json({ id: result.insertId });
   });
 });
 
 router.put("/api/tacos/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  let condition = "id = " + req.params.id;
 
-  console.log("condition", condition);
-
+  
   taco.updateOne({
-    devoured: req.body.devoured
+    picked_up: 1
   }, condition, function(result) {
-    if (result.changedRows == 0) {
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
+   
   });
+
+
 });
 
 module.exports = router;
+

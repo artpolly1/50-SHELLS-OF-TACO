@@ -1,0 +1,49 @@
+body {
+    background-color: #a0ffad !important;
+  }
+  
+  .col-md-4 {
+    background-color: #ffffff !important;
+    border: solid #52643a 2px;
+    align-items: center;
+  }
+  
+  .container {
+    font-family: 'ZCOOL KuaiLe', cursive;;
+  }
+  
+  .form-container {
+    font-family: 'ZCOOL KuaiLe', cursive;;
+    text-align: center;
+  }
+  
+  li {
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .create-update-form {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 48px !important;
+  }
+  
+  h2 {
+    text-align: center;
+  }
