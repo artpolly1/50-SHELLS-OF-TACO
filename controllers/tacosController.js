@@ -19,7 +19,7 @@ router.post("/api/tacos", function(req, res) {
   taco.insertOne([
     "taco_name", "picked_up"
   ], [
-    req.body.taco_name, req.body.picked_up
+    req.body.taco_name, 0
   ], function(result) {
     res.json({ id: result.insertId });
   });
