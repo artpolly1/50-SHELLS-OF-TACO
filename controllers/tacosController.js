@@ -14,6 +14,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/tacos", function(req, res) {
+  //table, cols, vals, cb
+  console.log('testing this function call');
   taco.insertOne([
     "taco_name", "picked_up"
   ], [
@@ -30,7 +32,7 @@ router.put("/api/tacos/:id", function(req, res) {
   taco.updateOne({
     picked_up: 1
   }, condition, function(result) {
-   
+    res.json({ id: result.insertId });
   });
 
 

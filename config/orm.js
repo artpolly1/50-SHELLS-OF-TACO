@@ -45,6 +45,7 @@ let orm = {
     });
   },
   insertOne: function(table, cols, vals, cb) {
+    console.log(table, cols, vals);
     let queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -55,6 +56,11 @@ let orm = {
     queryString += ") ";
 
     console.log(queryString);
+
+    // let queryString2 = "INSERT INTO " + table + " (" + cols.toString() + ") " +  "VALUES (" + vals + ")";
+    // // let SFFA = "INSERT INTO tlcv2vx9nm5qxtul (taco_name, picked_up) VALUES ('fish taco', false);"
+
+    // console.log(queryString2);
 
     connection.query(queryString, vals, function(err, result) {
       if (err) {
